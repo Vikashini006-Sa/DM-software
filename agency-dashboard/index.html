@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agency Dashboard</title>
+
+    <!-- Leaflet Map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>⭐ Agency</h2>
+
+        <nav>
+            <a class="active" href="#">Dashboard</a>
+            <a href="#">Disaster Reports</a>
+            <a href="#">Map</a>
+            <a href="#">Verification</a>
+            <a href="#">Settings</a>
+        </nav>
+    </aside>
+
+
+    <!-- Main Dashboard -->
+    <main class="main">
+
+        <header class="header">
+            <div>
+                <h1>Agency Dashboard</h1>
+                <p>Monitor active disaster reports</p>
+            </div>
+
+            <button id="refreshBtn">
+                🔄 Refresh
+            </button>
+        </header>
+
+
+        <!-- Summary Cards -->
+        <section class="cards">
+
+            <div class="card">
+                <span>🚨</span>
+                <div>
+                    <h3 id="activeReports">0</h3>
+                    <p>Active Reports</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <span>🔴</span>
+                <div>
+                    <h3 id="highSeverity">0</h3>
+                    <p>High Severity</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <span>🎯</span>
+                <div>
+                    <h3 id="avgConfidence">0%</h3>
+                    <p>Avg. Confidence</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <span>✅</span>
+                <div>
+                    <h3 id="verifiedReports">0</h3>
+                    <p>Verified</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Map -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>🗺️ Disaster Map</h2>
+
+                <select id="severityFilter">
+                    <option value="all">All Severity</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+
+            <div id="map"></div>
+        </section>
+
+
+        <!-- Reports -->
+        <section class="panel">
+
+            <div class="panel-header">
+                <h2>🚨 Active Disaster Reports</h2>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search reports..."
+                />
+            </div>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                          <th>Disaster</th>
+                          <th>Location</th>
+                          <th>Severity</th>
+                          <th>Confidence</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="reportTable">
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Leaflet JavaScript -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <!-- Our JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
